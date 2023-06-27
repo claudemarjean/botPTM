@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <style>
       @charset "UTF-8";/*!
  * Bootstrap  v5.3.0 (https://getbootstrap.com/)
@@ -24,8 +25,8 @@
                         <div class="text-end">
                             <img src="" width="20px" style="cursor:pointer;" class="img-square">
                         </div>
-                        <h3 class="text-center">P.T.M Multi Fian'Art</h3>
-                        <h5 class="text-center">(Fizarana vola automatique)</h5>
+                        <h3 class="text-center fw-bold ">P.T.M Multi Fian'Art</h3>
+                        <h5 class="text-center text-muted">Fizarana vola automatique</h5>
                         <div class="row">
                             <div class="col">
                                 <div class="form-floating mb-3">
@@ -93,7 +94,7 @@
                         <div class="row">
                             <div class="col">
                                 <button class="btn btn-primary col-12" id="calculer">
-                                    avoahy ny fizarana malaky
+                                    Omeo ny fizarana
                                 </button>
                             </div>
                         </div>
@@ -105,54 +106,55 @@
 </div>
 
     <!-- Fizarana isan-tsokajiny -->
-    <div class="row" id="result" style="display: none;">
+    <br><hr>
+    <div class="row border-3d" id="result" style="display: none; text-align: center;">
       <div class="col" style="background-color: #e6e6c6;">
           <div class="card">
               <h4 class="text-center">Fizarana isan-tsokajiny</h4>
               <div class="row">
                   <div class="col">
-                      <div class="form-floating mb-3">
+                      <div class="mb-3">
                           <label class="form-label" for="caisse">Caisse:</label>
-                          <span name="caisse" class="form-control-plaintext" id="caisse"></span>
+                          <span name="caisse" id="caisse" class="badge bg-primary"></span>
                       </div>
                   </div>
               </div>
               <div class="row">
                   <div class="col">
-                      <div class="form-floating mb-3">
+                      <div class=" mb-3">
                           <label class="form-label" for="matosy">Matosy:</label>
-                          <span name="matosy" class="form-control-plaintext" id="matosy"></span>
+                          <span name="matosy" id="matosy" class="badge bg-secondary"></span>
                       </div>
                   </div>
               </div>
               <div class="row">
                   <div class="col">
-                      <div class="form-floating mb-3">
+                      <div class=" mb-3">
                           <label class="form-label" for="pross">Pross:</label>
-                          <span name="pross" class="form-control-plaintext" id="pross"></span>
+                          <span class="badge bg-success" name="pross" id="pross"></span>
                       </div>
                   </div>
               </div>
               <div class="row">
                   <div class="col">
-                      <div class="form-floating mb-3">
+                      <div class=" mb-3">
                           <label class="form-label" for="tahina">Tahina:</label>
-                          <span name="tahina" class="form-control-plaintext" id="tahina"></span>
+                          <span class="badge bg-success" name="tahina" id="tahina"></span>
                       </div>
                   </div>
               </div>
               <div class="row">
                   <div class="col">
-                      <div class="form-floating mb-3">
+                      <div class=" mb-3">
                           <label class="form-label" for="claude">Claude:</label>
-                          <span name="claude" class="form-control-plaintext" id="claude"></span>
+                          <span class="badge bg-success" name="claude" id="claude"></span>
                       </div>
                   </div>
               </div>
               <div class="row">
                   <div class="col">
-                      <button class="btn btn-primary" id="misimisy">
-                          Omeo fanazavana bebe kokoa
+                      <button class="btn btn-primary col-6" id="misimisy">
+                          Omeo fanazavana misimisy kokoa
                       </button>
                   </div>
               </div>
@@ -231,14 +233,21 @@
       </div>
   </div>
 
-<!-- fin fizarana isan-tsokajiny -->
-    
-    
-</body>
+  <!-- fin fizarana isan-tsokajiny -->
+      
+      
+  </body>
 </html>
 
 <script>
-  
+
+  const separateurMillier = valeurASeparer =>{
+        let valeurToString = valeurASeparer.toString();
+        valeurToString.replace(/[.,]/g, '');
+        let valeurAvecSeparateur = valeurToString.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        return valeurAvecSeparateur;
+      }
+
   document.addEventListener("DOMContentLoaded", () => {
     
     const photosElement = document.getElementById("photos");
@@ -429,22 +438,86 @@
       salaireTahina = Math.round(salaireTahina);
       salaireClaude = Math.round(salaireClaude);
 
-      document.getElementById("caisse").textContent = `${caisse}Ar`;
-      document.getElementById("matosy").textContent = `${matosy}Ar`;
-      document.getElementById("pross").textContent = `${salairePross}Ar`;
-      document.getElementById("tahina").textContent = `${salaireTahina}Ar`;
-      document.getElementById("claude").textContent = `${salaireClaude}Ar`;
+      document.getElementById("caisse").textContent = `${separateurMillier(caisse)}Ar`;
+      document.getElementById("matosy").textContent = `${separateurMillier(matosy)}Ar`;
+      document.getElementById("pross").textContent = `${separateurMillier(salairePross)}Ar`;
+      document.getElementById("tahina").textContent = `${separateurMillier(salaireTahina)}Ar`;
+      document.getElementById("claude").textContent = `${separateurMillier(salaireClaude)}Ar`;
 
       document.getElementById("result").style.display = "block";
 
-      document.getElementById("benef-msms").textContent = `${benef} Ar`;
-      document.getElementById("caisse-msms").textContent = `${benef}Ar x (${pourcentageCaisse}%) = ${caisse} Ar`;
-      document.getElementById("matosy-msms").textContent = `${benef}Ar x (${pourcentageMatosy}%) = ${matosy} Ar`;
-      document.getElementById("cofond-msms").textContent = `${benef}Ar x (${pourcentageConfondateur}%) = ${cofond} Ar`;
-      document.getElementById("salaire-action-msms").textContent = `${benef}Ar x (${pourcentageSalaireAction}%) = ${salaireAction} Ar`;
-      document.getElementById("pross-msms").textContent = `co-fondateur(Pross):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salairePhotosAgentTerrairnPross + salaire_action_at_p_pv_pross)}Ar ||| salaire action retouche photos: ${(salaireActionPhotosPross + salaire_action_rp_pv_pross)}Ar ||| salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoPross + salaire_at_v_pv_pross)}Ar ||| salaire action montage vidéos: ${(salaireActionMontagePross + salaire_mv_pv_pross)}Ar |||||| = ${salairePross}Ar`;
-      document.getElementById("tahina-msms").textContent = `co-fondateur(Tahina):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salairePhotosAgentTerrainTahina + salaire_action_at_p_pv_tahina)}Ar ||| salaire action retouche photos: ${(salaireActionPhotosTahina + salaire_action_rp_pv_tahina)}Ar ||| salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoTahina + salaire_at_v_pv_tahina)}Ar ||| salaire action montage vidéos: ${(salaireActionMontageTahina + salaire_mv_pv_tahina)}Ar |||||| = ${salaireTahina}Ar`;
-      document.getElementById("claude-msms").textContent = `co-fondateur(Claude):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salairePhotosAgentTerrainClaude + salaire_action_at_p_pv_claude)}Ar ||| salaire action retouche photos: ${(salaireActionPhotosClaude + salaire_action_rp_pv_claude)}Ar ||| salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoClaude + salaire_at_v_pv_claude)}Ar ||| salaire action montage vidéos: ${(salaireActionMontageClaude + salaire_mv_pv_claude)}Ar |||||| = ${salaireClaude}Ar`;
+      document.getElementById("benef-msms").textContent = `${separateurMillier(benef)} Ar`;
+      document.getElementById("caisse-msms").textContent = `${separateurMillier(benef)}Ar x (${pourcentageCaisse}%) = ${separateurMillier(caisse)} Ar`;
+      document.getElementById("matosy-msms").textContent = `${separateurMillier(benef)}Ar x (${pourcentageMatosy}%) = ${separateurMillier(matosy)} Ar`;
+      document.getElementById("cofond-msms").textContent = `${separateurMillier(benef)}Ar x (${pourcentageConfondateur}%) = ${separateurMillier(cofond)} Ar`;
+      document.getElementById("salaire-action-msms").textContent = `${separateurMillier(benef)}Ar x (${pourcentageSalaireAction}%) = ${separateurMillier(salaireAction)} Ar`;
+
+
+      const lignePross = `
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
+                  co-fondateur(Pross):(${cofond}/3) = ${cofond_ptm}Ar 
+                </li>
+                <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                  salaire action photos terrain: ${(salairePhotosAgentTerrairnPross + salaire_action_at_p_pv_pross)}Ar
+                </li>
+                <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">
+                  salaire action retouche photos: ${(salaireActionPhotosPross + salaire_action_rp_pv_pross)}Ar 
+                </li>
+                <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+                salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoPross + salaire_at_v_pv_pross)}Ar 
+                </li>
+                <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+                  salaire action montage vidéos: ${(salaireActionMontagePross + salaire_mv_pv_pross)}Ar 
+                </li>
+                Total <span class="badge bg-info">${separateurMillier(salairePross)}Ar</span> 
+              </ul>
+              `;
+        const ligneTahina = `
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
+                  co-fondateur(Tahina):(${cofond}/3) = ${cofond_ptm}Ar
+                </li>
+                <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                  salaire action photos terrain: ${(salairePhotosAgentTerrainTahina + salaire_action_at_p_pv_tahina)}Ar
+                </li>
+                <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">
+                  salaire action retouche photos: ${(salaireActionPhotosTahina + salaire_action_rp_pv_tahina)}Ar 
+                </li>
+                <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+                  salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoTahina + salaire_at_v_pv_tahina)}Ar 
+                </li>
+                <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+                  salaire action montage vidéos: ${(salaireActionMontageTahina + salaire_mv_pv_tahina)}Ar 
+                </li>
+                Total <span class="badge bg-info">${separateurMillier(salaireTahina)}Ar</span> 
+              </ul>
+              `;
+        const ligneClaude = `
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-primary d-flex justify-content-between align-items-center">
+                  co-fondateur(Claude):(${cofond}/3) = ${cofond_ptm}Ar
+                </li>
+                <li class="list-group-item list-group-item-secondary d-flex justify-content-between align-items-center">
+                  salaire action photos terrain: ${(salairePhotosAgentTerrainClaude + salaire_action_at_p_pv_claude)}Ar
+                </li>
+                <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">
+                  salaire action retouche photos: ${(salaireActionPhotosClaude + salaire_action_rp_pv_claude)}Ar 
+                </li>
+                <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center">
+                  salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoClaude + salaire_at_v_pv_claude)}Ar 
+                </li>
+                <li class="list-group-item list-group-item-warning d-flex justify-content-between align-items-center">
+                  salaire action montage vidéos: ${(salaireActionMontageClaude + salaire_mv_pv_claude)}Ar
+                </li>
+                Total <span class="badge bg-info">${separateurMillier(salaireClaude)}Ar</span> 
+              </ul>
+              `;
+
+
+      document.getElementById("pross-msms").innerHTML = lignePross;
+      document.getElementById("tahina-msms").innerHTML = ligneTahina;
+      document.getElementById("claude-msms").innerHTML = ligneClaude;
         }
     });
   });
