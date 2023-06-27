@@ -7086,44 +7086,46 @@ html {
       if(e.target.matches('#calculer')){
         
         const benef = document.querySelector("#benef").value;
-        const pourcentage_caisse = 20;
-        const pourcentage_matosy = 20;
-        let pourcentage_cofond = 35;
-        let pourcentage_salaire_action = 25;
+        const pourcentageCaisse = 20;
+        const pourcentageMatosy = 20;
+        let pourcentageConfondateur = 35;
+        let pourcentageSalaireAction = 25;
 
-        let caisse = (benef * pourcentage_caisse) / 100;
-        let matosy = (benef * pourcentage_matosy) / 100;
+        let caisse = (benef * pourcentageCaisse) / 100;
+        let matosy = (benef * pourcentageMatosy) / 100;
 
         if (matosy > 20000) {
-          const pourc_matosy_avant = pourcentage_matosy;
-          pourcentage_matosy = Math.round((20000 * 100) / benef);
-          const rest_pourct_matosy = pourc_matosy_avant - pourcentage_matosy;
-          pourcentage_cofond += rest_pourct_matosy;
+          const pourcentageMatosyAvant = pourcentageMatosy;
+          pourcentageMatosy = Math.round((20000 * 100) / benef);
+          const rest_pourct_matosy = pourcentageMatosyAvant - pourcentageMatosy;
+          pourcentageConfondateur += rest_pourct_matosy;
         }
 
-        matosy = Math.round((benef * pourcentage_matosy) / 100);
+        matosy = Math.round((benef * pourcentageMatosy) / 100);
 
-        const cofond = (benef * pourcentage_cofond) / 100;
-        const salaire_action = (benef * pourcentage_salaire_action) / 100;
+        const cofond = (benef * pourcentageConfondateur) / 100;
+        const salaireAction = (benef * pourcentageSalaireAction) / 100;
 
         const cofond_ptm = Math.round(cofond / 3);
 
-        let salaire_pross = cofond_ptm;
-        let salaire_tahina = cofond_ptm;
-        let salaire_claude = cofond_ptm;
+        let salairePross = cofond_ptm;
+        let salaireTahina = cofond_ptm;
+        let salaireClaude = cofond_ptm;
 
-        let salaire_photos_agent_terrain_pross = 0;
-        let salaire_photos_agent_terrain_tahina = 0;
-        let salaire_photos_agent_terrain_claude = 0;
-        let salaire_action_photos_pross = 0;
-        let salaire_action_photos_tahina = 0;
-        let salaire_action_photos_claude = 0;
-        let salaire_action_agent_terrain_video_pross = 0;
-        let salaire_action_agent_terrain_video_tahina = 0;
-        let salaire_action_agent_terrain_video_claude = 0;
-        let salaire_action_montage_pross = 0;
-        let salaire_action_montage_tahina = 0;
-        let salaire_action_montage_claude = 0;
+        let salairePhotosAgentTerrairnPross = 0;
+        let salairePhotosAgentTerrainTahina = 0;
+        let salairePhotosAgentTerrainClaude = 0;
+        let salaireActionPhotosPross = 0;
+        let salaireActionPhotosTahina = 0;
+        let salaireActionPhotosClaude = 0;
+        let salaireActionAgentTerrainVideoPross = 0;
+        let salaireActionAgentTerrainVideoTahina = 0;
+        let salaireActionAgentTerrainVideoClaude = 0;
+        let salaireActionMontagePross = 0;
+        let salaireActionMontageTahina = 0;
+        let salaireActionMontageClaude = 0;
+
+        // Je laisse les noms des variables suivantes, je ne peux pas les transformer en camelCase car je ne me souviens plus de l'explication de cette variable :D
         let salaire_action_at_p_pv_pross = 0;
         let salaire_action_at_p_pv_tahina = 0;
         let salaire_action_at_p_pv_claude = 0;
@@ -7143,115 +7145,115 @@ html {
         // si photos seulement
         if (document.querySelector("#asa").value == 1) {
         // agent sur terrain photos
-        salaire_pross = document.querySelector("#agent-terrain-photos").value == 1 ? salaire_action / 2 + salaire_pross : salaire_pross;
-        salaire_tahina = document.querySelector("#agent-terrain-photos").value == 2 ? salaire_action / 2 + salaire_tahina : salaire_tahina;
-        salaire_claude = document.querySelector("#agent-terrain-photos").value == 3 ? salaire_action / 2 + salaire_claude : salaire_claude;
+        salairePross = document.querySelector("#agent-terrain-photos").value == 1 ? salaireAction / 2 + salairePross : salairePross;
+        salaireTahina = document.querySelector("#agent-terrain-photos").value == 2 ? salaireAction / 2 + salaireTahina : salaireTahina;
+        salaireClaude = document.querySelector("#agent-terrain-photos").value == 3 ? salaireAction / 2 + salaireClaude : salaireClaude;
 
         // retouche photos
-        salaire_pross = document.querySelector("#retouche").value == 1 ? salaire_action / 2 + salaire_pross : salaire_pross;
-        salaire_tahina = document.querySelector("#retouche").value == 2 ? salaire_action / 2 + salaire_tahina : salaire_tahina;
-        salaire_claude = document.querySelector("#retouche").value == 3 ? salaire_action / 2 + salaire_claude : salaire_claude;
+        salairePross = document.querySelector("#retouche").value == 1 ? salaireAction / 2 + salairePross : salairePross;
+        salaireTahina = document.querySelector("#retouche").value == 2 ? salaireAction / 2 + salaireTahina : salaireTahina;
+        salaireClaude = document.querySelector("#retouche").value == 3 ? salaireAction / 2 + salaireClaude : salaireClaude;
 
         // salaire action agent sur terrain
-        salaire_photos_agent_terrain_pross = document.querySelector("#agent-terrain-photos").value == 1 ? salaire_action / 2 : 0;
-        salaire_photos_agent_terrain_tahina = document.querySelector("#agent-terrain-photos").value == 2 ? salaire_action / 2 : 0;
-        salaire_photos_agent_terrain_claude = document.querySelector("#agent-terrain-photos").value == 3 ? salaire_action / 2 : 0;
+        salairePhotosAgentTerrairnPross = document.querySelector("#agent-terrain-photos").value == 1 ? salaireAction / 2 : 0;
+        salairePhotosAgentTerrainTahina = document.querySelector("#agent-terrain-photos").value == 2 ? salaireAction / 2 : 0;
+        salairePhotosAgentTerrainClaude = document.querySelector("#agent-terrain-photos").value == 3 ? salaireAction / 2 : 0;
 
-        // salaire_action retouche photos
-        salaire_action_photos_pross = document.querySelector("#retouche").value == 1 ? salaire_action / 2 : 0;
-        salaire_action_photos_tahina = document.querySelector("#retouche").value == 2 ? salaire_action / 2 : 0;
-        salaire_action_photos_claude = document.querySelector("#retouche").value == 3 ? salaire_action / 2 : 0;
+        // salaireAction retouche photos
+        salaireActionPhotosPross = document.querySelector("#retouche").value == 1 ? salaireAction / 2 : 0;
+        salaireActionPhotosTahina = document.querySelector("#retouche").value == 2 ? salaireAction / 2 : 0;
+        salaireActionPhotosClaude = document.querySelector("#retouche").value == 3 ? salaireAction / 2 : 0;
       }
 
         
         // si vidéos seuelement
         if (document.querySelector("#asa").value == 2) {
         // agent sur terrain vidéos
-        salaire_pross = document.querySelector("#agent-terrain-videos").value == 1 ? salaire_action / 2 + salaire_pross : salaire_pross;
-        salaire_tahina = document.querySelector("#agent-terrain-videos").value == 2 ? salaire_action / 2 + salaire_tahina : salaire_tahina;
-        salaire_claude = document.querySelector("#agent-terrain-videos").value == 3 ? salaire_action / 2 + salaire_claude : salaire_claude;
+        salairePross = document.querySelector("#agent-terrain-videos").value == 1 ? salaireAction / 2 + salairePross : salairePross;
+        salaireTahina = document.querySelector("#agent-terrain-videos").value == 2 ? salaireAction / 2 + salaireTahina : salaireTahina;
+        salaireClaude = document.querySelector("#agent-terrain-videos").value == 3 ? salaireAction / 2 + salaireClaude : salaireClaude;
 
         // montage vidéos
-        salaire_pross = document.querySelector("#montage").value == 1 ? salaire_action / 2 + salaire_pross : salaire_pross;
-        salaire_tahina = document.querySelector("#montage").value == 2 ? salaire_action / 2 + salaire_tahina : salaire_tahina;
-        salaire_claude = document.querySelector("#montage").value == 3 ? salaire_action / 2 + salaire_claude : salaire_claude;
+        salairePross = document.querySelector("#montage").value == 1 ? salaireAction / 2 + salairePross : salairePross;
+        salaireTahina = document.querySelector("#montage").value == 2 ? salaireAction / 2 + salaireTahina : salaireTahina;
+        salaireClaude = document.querySelector("#montage").value == 3 ? salaireAction / 2 + salaireClaude : salaireClaude;
 
-        // agent sur terrain vidéos salaire_action
-        salaire_action_agent_terrain_video_pross = document.querySelector("#agent-terrain-videos").value == 1 ? salaire_action / 2 : 0;
-        salaire_action_agent_terrain_video_tahina = document.querySelector("#agent-terrain-videos").value == 2 ? salaire_action / 2 : 0;
-        salaire_action_agent_terrain_video_claude = document.querySelector("#agent-terrain-videos").value == 3 ? salaire_action / 2 : 0;
+        // agent sur terrain vidéos salaireAction
+        salaireActionAgentTerrainVideoPross = document.querySelector("#agent-terrain-videos").value == 1 ? salaireAction / 2 : 0;
+        salaireActionAgentTerrainVideoTahina = document.querySelector("#agent-terrain-videos").value == 2 ? salaireAction / 2 : 0;
+        salaireActionAgentTerrainVideoClaude = document.querySelector("#agent-terrain-videos").value == 3 ? salaireAction / 2 : 0;
 
-        // montage vidéos salaire_action
-        salaire_action_montage_pross = document.querySelector("#montage").value == 1 ? salaire_action / 2 : 0;
-        salaire_action_montage_tahina = document.querySelector("#montage").value == 2 ? salaire_action / 2 : 0;
-        salaire_action_montage_claude = document.querySelector("#montage").value == 3 ? salaire_action / 2 : 0;
+        // montage vidéos salaireAction
+        salaireActionMontagePross = document.querySelector("#montage").value == 1 ? salaireAction / 2 : 0;
+        salaireActionMontageTahina = document.querySelector("#montage").value == 2 ? salaireAction / 2 : 0;
+        salaireActionMontageClaude = document.querySelector("#montage").value == 3 ? salaireAction / 2 : 0;
       }
 
 
         // si photos et vidéos
         if (document.querySelector("#asa").value == 3) {
         // agent sur terrain photos
-        salaire_pross = document.querySelector("#agent-terrain-photos").value == 1 ? salaire_action / 4 + salaire_pross : salaire_pross;
-        salaire_tahina = document.querySelector("#agent-terrain-photos").value == 2 ? salaire_action / 4 + salaire_tahina : salaire_tahina;
-        salaire_claude = document.querySelector("#agent-terrain-photos").value == 3 ? salaire_action / 4 + salaire_claude : salaire_claude;
+        salairePross = document.querySelector("#agent-terrain-photos").value == 1 ? salaireAction / 4 + salairePross : salairePross;
+        salaireTahina = document.querySelector("#agent-terrain-photos").value == 2 ? salaireAction / 4 + salaireTahina : salaireTahina;
+        salaireClaude = document.querySelector("#agent-terrain-photos").value == 3 ? salaireAction / 4 + salaireClaude : salaireClaude;
 
         // retouche photos
-        salaire_pross = document.querySelector("#retouche").value == 1 ? salaire_action / 4 + salaire_pross : salaire_pross;
-        salaire_tahina = document.querySelector("#retouche").value == 2 ? salaire_action / 4 + salaire_tahina : salaire_tahina;
-        salaire_claude = document.querySelector("#retouche").value == 3 ? salaire_action / 4 + salaire_claude : salaire_claude;
+        salairePross = document.querySelector("#retouche").value == 1 ? salaireAction / 4 + salairePross : salairePross;
+        salaireTahina = document.querySelector("#retouche").value == 2 ? salaireAction / 4 + salaireTahina : salaireTahina;
+        salaireClaude = document.querySelector("#retouche").value == 3 ? salaireAction / 4 + salaireClaude : salaireClaude;
 
         // agent sur terrain vidéos
-        salaire_pross = document.querySelector("#agent-terrain-videos").value == 1 ? salaire_action / 4 + salaire_pross : salaire_pross;
-        salaire_tahina = document.querySelector("#agent-terrain-videos").value == 2 ? salaire_action / 4 + salaire_tahina : salaire_tahina;
-        salaire_claude = document.querySelector("#agent-terrain-videos").value == 3 ? salaire_action / 4 + salaire_claude : salaire_claude;
+        salairePross = document.querySelector("#agent-terrain-videos").value == 1 ? salaireAction / 4 + salairePross : salairePross;
+        salaireTahina = document.querySelector("#agent-terrain-videos").value == 2 ? salaireAction / 4 + salaireTahina : salaireTahina;
+        salaireClaude = document.querySelector("#agent-terrain-videos").value == 3 ? salaireAction / 4 + salaireClaude : salaireClaude;
 
         // montage vidéos
-        salaire_pross = document.querySelector("#montage").value == 1 ? salaire_action / 4 + salaire_pross : salaire_pross;
-        salaire_tahina = document.querySelector("#montage").value == 2 ? salaire_action / 4 + salaire_tahina : salaire_tahina;
-        salaire_claude = document.querySelector("#montage").value == 3 ? salaire_action / 4 + salaire_claude : salaire_claude;
+        salairePross = document.querySelector("#montage").value == 1 ? salaireAction / 4 + salairePross : salairePross;
+        salaireTahina = document.querySelector("#montage").value == 2 ? salaireAction / 4 + salaireTahina : salaireTahina;
+        salaireClaude = document.querySelector("#montage").value == 3 ? salaireAction / 4 + salaireClaude : salaireClaude;
 
         // action agent sur terrain photos (photos & vidéos)
-        salaire_action_at_p_pv_pross = document.querySelector("#agent-terrain-photos").value == 1 ? salaire_action / 4 : 0;
-        salaire_action_at_p_pv_tahina = document.querySelector("#agent-terrain-photos").value == 2 ? salaire_action / 4 : 0;
-        salaire_action_at_p_pv_claude = document.querySelector("#agent-terrain-photos").value == 3 ? salaire_action / 4 : 0;
+        salaire_action_at_p_pv_pross = document.querySelector("#agent-terrain-photos").value == 1 ? salaireAction / 4 : 0;
+        salaire_action_at_p_pv_tahina = document.querySelector("#agent-terrain-photos").value == 2 ? salaireAction / 4 : 0;
+        salaire_action_at_p_pv_claude = document.querySelector("#agent-terrain-photos").value == 3 ? salaireAction / 4 : 0;
 
         // salaire action retouche photos (photos & vidéos)
-        salaire_action_rp_pv_pross = document.querySelector("#retouche").value == 1 ? salaire_action / 4 : 0;
-        salaire_action_rp_pv_tahina = document.querySelector("#retouche").value == 2 ? salaire_action / 4 : 0;
-        salaire_action_rp_pv_claude = document.querySelector("#retouche").value == 3 ? salaire_action / 4 : 0;
+        salaire_action_rp_pv_pross = document.querySelector("#retouche").value == 1 ? salaireAction / 4 : 0;
+        salaire_action_rp_pv_tahina = document.querySelector("#retouche").value == 2 ? salaireAction / 4 : 0;
+        salaire_action_rp_pv_claude = document.querySelector("#retouche").value == 3 ? salaireAction / 4 : 0;
 
         // salaire action agent sur terrain vidéos (photos & vidéos)
-        salaire_at_v_pv_pross = document.querySelector("#agent-terrain-videos").value == 1 ? salaire_action / 4 : 0;
-        salaire_at_v_pv_tahina = document.querySelector("#agent-terrain-videos").value == 2 ? salaire_action / 4 : 0;
-        salaire_at_v_pv_claude = document.querySelector("#agent-terrain-videos").value == 3 ? salaire_action / 4 : 0;
+        salaire_at_v_pv_pross = document.querySelector("#agent-terrain-videos").value == 1 ? salaireAction / 4 : 0;
+        salaire_at_v_pv_tahina = document.querySelector("#agent-terrain-videos").value == 2 ? salaireAction / 4 : 0;
+        salaire_at_v_pv_claude = document.querySelector("#agent-terrain-videos").value == 3 ? salaireAction / 4 : 0;
 
         // salaire action montage vidéos (photos & vidéos)
-        salaire_mv_pv_pross = document.querySelector("#montage").value == 1 ? salaire_action / 4 : 0;
-        salaire_mv_pv_tahina = document.querySelector("#montage").value == 2 ? salaire_action / 4 : 0;
-        salaire_mv_pv_claude = document.querySelector("#montage").value == 3 ? salaire_action / 4 : 0;
+        salaire_mv_pv_pross = document.querySelector("#montage").value == 1 ? salaireAction / 4 : 0;
+        salaire_mv_pv_tahina = document.querySelector("#montage").value == 2 ? salaireAction / 4 : 0;
+        salaire_mv_pv_claude = document.querySelector("#montage").value == 3 ? salaireAction / 4 : 0;
       }
 
 
-      salaire_pross = Math.round(salaire_pross);
-      salaire_tahina = Math.round(salaire_tahina);
-      salaire_claude = Math.round(salaire_claude);
+      salairePross = Math.round(salairePross);
+      salaireTahina = Math.round(salaireTahina);
+      salaireClaude = Math.round(salaireClaude);
 
       document.getElementById("caisse").textContent = `${caisse}Ar`;
       document.getElementById("matosy").textContent = `${matosy}Ar`;
-      document.getElementById("pross").textContent = `${salaire_pross}Ar`;
-      document.getElementById("tahina").textContent = `${salaire_tahina}Ar`;
-      document.getElementById("claude").textContent = `${salaire_claude}Ar`;
+      document.getElementById("pross").textContent = `${salairePross}Ar`;
+      document.getElementById("tahina").textContent = `${salaireTahina}Ar`;
+      document.getElementById("claude").textContent = `${salaireClaude}Ar`;
 
       document.getElementById("result").style.display = "block";
 
       document.getElementById("benef-msms").textContent = `${benef} Ar`;
-      document.getElementById("caisse-msms").textContent = `${benef}Ar x (${pourcentage_caisse}%) = ${caisse} Ar`;
-      document.getElementById("matosy-msms").textContent = `${benef}Ar x (${pourcentage_matosy}%) = ${matosy} Ar`;
-      document.getElementById("cofond-msms").textContent = `${benef}Ar x (${pourcentage_cofond}%) = ${cofond} Ar`;
-      document.getElementById("salaire-action-msms").textContent = `${benef}Ar x (${pourcentage_salaire_action}%) = ${salaire_action} Ar`;
-      document.getElementById("pross-msms").textContent = `co-fondateur(Pross):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salaire_photos_agent_terrain_pross + salaire_action_at_p_pv_pross)}Ar ||| salaire action retouche photos: ${(salaire_action_photos_pross + salaire_action_rp_pv_pross)}Ar ||| salaire action agent sur terrain tournage: ${(salaire_action_agent_terrain_video_pross + salaire_at_v_pv_pross)}Ar ||| salaire action montage vidéos: ${(salaire_action_montage_pross + salaire_mv_pv_pross)}Ar |||||| = ${salaire_pross}Ar`;
-      document.getElementById("tahina-msms").textContent = `co-fondateur(Tahina):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salaire_photos_agent_terrain_tahina + salaire_action_at_p_pv_tahina)}Ar ||| salaire action retouche photos: ${(salaire_action_photos_tahina + salaire_action_rp_pv_tahina)}Ar ||| salaire action agent sur terrain tournage: ${(salaire_action_agent_terrain_video_tahina + salaire_at_v_pv_tahina)}Ar ||| salaire action montage vidéos: ${(salaire_action_montage_tahina + salaire_mv_pv_tahina)}Ar |||||| = ${salaire_tahina}Ar`;
-      document.getElementById("claude-msms").textContent = `co-fondateur(Claude):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salaire_photos_agent_terrain_claude + salaire_action_at_p_pv_claude)}Ar ||| salaire action retouche photos: ${(salaire_action_photos_claude + salaire_action_rp_pv_claude)}Ar ||| salaire action agent sur terrain tournage: ${(salaire_action_agent_terrain_video_claude + salaire_at_v_pv_claude)}Ar ||| salaire action montage vidéos: ${(salaire_action_montage_claude + salaire_mv_pv_claude)}Ar |||||| = ${salaire_claude}Ar`;
+      document.getElementById("caisse-msms").textContent = `${benef}Ar x (${pourcentageCaisse}%) = ${caisse} Ar`;
+      document.getElementById("matosy-msms").textContent = `${benef}Ar x (${pourcentageMatosy}%) = ${matosy} Ar`;
+      document.getElementById("cofond-msms").textContent = `${benef}Ar x (${pourcentageConfondateur}%) = ${cofond} Ar`;
+      document.getElementById("salaire-action-msms").textContent = `${benef}Ar x (${pourcentageSalaireAction}%) = ${salaireAction} Ar`;
+      document.getElementById("pross-msms").textContent = `co-fondateur(Pross):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salairePhotosAgentTerrairnPross + salaire_action_at_p_pv_pross)}Ar ||| salaire action retouche photos: ${(salaireActionPhotosPross + salaire_action_rp_pv_pross)}Ar ||| salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoPross + salaire_at_v_pv_pross)}Ar ||| salaire action montage vidéos: ${(salaireActionMontagePross + salaire_mv_pv_pross)}Ar |||||| = ${salairePross}Ar`;
+      document.getElementById("tahina-msms").textContent = `co-fondateur(Tahina):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salairePhotosAgentTerrainTahina + salaire_action_at_p_pv_tahina)}Ar ||| salaire action retouche photos: ${(salaireActionPhotosTahina + salaire_action_rp_pv_tahina)}Ar ||| salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoTahina + salaire_at_v_pv_tahina)}Ar ||| salaire action montage vidéos: ${(salaireActionMontageTahina + salaire_mv_pv_tahina)}Ar |||||| = ${salaireTahina}Ar`;
+      document.getElementById("claude-msms").textContent = `co-fondateur(Claude):(${cofond}/3) = ${cofond_ptm}Ar ||| salaire action photos terrain: ${(salairePhotosAgentTerrainClaude + salaire_action_at_p_pv_claude)}Ar ||| salaire action retouche photos: ${(salaireActionPhotosClaude + salaire_action_rp_pv_claude)}Ar ||| salaire action agent sur terrain tournage: ${(salaireActionAgentTerrainVideoClaude + salaire_at_v_pv_claude)}Ar ||| salaire action montage vidéos: ${(salaireActionMontageClaude + salaire_mv_pv_claude)}Ar |||||| = ${salaireClaude}Ar`;
         }
     });
   });
