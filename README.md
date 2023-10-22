@@ -1,2 +1,2 @@
 # botPTM
-BOT PTM mpizara vola automatique
+BOT PTM 
